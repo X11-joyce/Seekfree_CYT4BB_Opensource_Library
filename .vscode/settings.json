@@ -1,0 +1,16 @@
+{
+    "files.encoding": "gbk",
+    "files.autoGuessEncoding": false,
+    "cortex-debug.openocdPath": "D:\\Infineon\\openocd\\bin\\openocd.exe",
+    "zf.openocd.scriptsPath": "D:\\Infineon\\openocd\\scripts",
+    "zf.openocd.targetCfg": "target/infineon/cytxbb.cfg",
+    "zf.openocd.interfaceCfg": "interface/cmsis-dap.cfg",
+    "zf.openocd.adapterSpeed": "1000",
+    "zf.iar.cspybatPath": "D:\\IAR Systems\\Embedded Workbench 9.4\\common\\bin\\CSpyBat.exe",
+    "zf.iar.generalXcl": "project\\iar\\project_config\\settings\\cyt4bb7_cm_7_0.Debug.general.xcl",
+    "zf.iar.driverXcl.m7_0": "project\\iar\\project_config\\settings\\cyt4bb7_cm_7_0.Debug.driver.xcl",
+    "zf.iar.driverXcl.m7_1": "project\\iar\\project_config\\settings\\cyt4bb7_cm_7_1.Debug.driver.xcl",
+    "zf.iar.debugFile.m7_0": "project\\iar\\project_config\\Debug_m7_0\\Exe\\cyt4bb7_cm_7_0.out",
+    "zf.iar.debugFile.m7_1": "project\\iar\\project_config\\Debug_m7_1\\Exe\\cyt4bb7_cm_7_1.out",
+    "cortex-debug.armToolchainPath": "D://msys2//mingw64//bin"
+}

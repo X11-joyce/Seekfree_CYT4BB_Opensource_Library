@@ -1,0 +1,297 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "OpenOCD: Flash CM7_0",
+      "type": "shell",
+      "command": "${config:cortex-debug.openocdPath}",
+      "group": "build",
+      "options": {
+        "cwd": "${workspaceFolder}",
+        "shell": {
+          "executable": "C:\\Windows\\System32\\cmd.exe",
+          "args": [
+            "/d",
+            "/c",
+            "chcp 936>nul &&"
+          ]
+        }
+      },
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated",
+        "clear": true
+      },
+      "args": [
+        "-s",
+        "${config:zf.openocd.scriptsPath}",
+        "-f",
+        "${config:zf.openocd.interfaceCfg}",
+        "-c",
+        "transport select swd",
+        "-c",
+        "set ADAPTER_SPEED ${config:zf.openocd.adapterSpeed}",
+        "-c",
+        "set ENABLE_ACQUIRE 0",
+        "-c",
+        "set ADAPTER_SRST_DELAY 200",
+        "-c",
+        "set ADAPTER_SRST_PULSE 300",
+        "-c",
+        "reset_config srst_only srst_nogate connect_deassert_srst",
+        "-f",
+        "${config:zf.openocd.targetCfg}",
+        "-c",
+        "init; reset halt; program {project/iar/Debug_m7_0/Exe/cyt4bb7_cm_7_0.hex} verify; reset run; shutdown"
+      ],
+      "problemMatcher": []
+    },
+    {
+      "label": "OpenOCD: Flash CM7_1",
+      "type": "shell",
+      "command": "${config:cortex-debug.openocdPath}",
+      "group": "build",
+      "options": {
+        "cwd": "${workspaceFolder}",
+        "shell": {
+          "executable": "C:\\Windows\\System32\\cmd.exe",
+          "args": [
+            "/d",
+            "/c",
+            "chcp 936>nul &&"
+          ]
+        }
+      },
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated",
+        "clear": true
+      },
+      "args": [
+        "-s",
+        "${config:zf.openocd.scriptsPath}",
+        "-f",
+        "${config:zf.openocd.interfaceCfg}",
+        "-c",
+        "transport select swd",
+        "-c",
+        "set ADAPTER_SPEED ${config:zf.openocd.adapterSpeed}",
+        "-c",
+        "set ENABLE_ACQUIRE 0",
+        "-c",
+        "set ADAPTER_SRST_DELAY 200",
+        "-c",
+        "set ADAPTER_SRST_PULSE 300",
+        "-c",
+        "reset_config srst_only srst_nogate connect_deassert_srst",
+        "-f",
+        "${config:zf.openocd.targetCfg}",
+        "-c",
+        "init; reset halt; program {project/iar/Debug_m7_1/Exe/cyt4bb7_cm_7_1.hex} verify; reset run; shutdown"
+      ],
+      "problemMatcher": []
+    },
+    {
+      "label": "OpenOCD: Flash CM7_0 + CM7_1",
+      "type": "shell",
+      "command": "${config:cortex-debug.openocdPath}",
+      "group": {
+        "kind": "build"
+      },
+      "options": {
+        "cwd": "${workspaceFolder}",
+        "shell": {
+          "executable": "C:\\Windows\\System32\\cmd.exe",
+          "args": [
+            "/d",
+            "/c",
+            "chcp 936>nul &&"
+          ]
+        }
+      },
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated",
+        "clear": true
+      },
+      "args": [
+        "-s",
+        "${config:zf.openocd.scriptsPath}",
+        "-f",
+        "${config:zf.openocd.interfaceCfg}",
+        "-c",
+        "transport select swd",
+        "-c",
+        "set ADAPTER_SPEED ${config:zf.openocd.adapterSpeed}",
+        "-c",
+        "set ENABLE_ACQUIRE 0",
+        "-c",
+        "set ADAPTER_SRST_DELAY 200",
+        "-c",
+        "set ADAPTER_SRST_PULSE 300",
+        "-c",
+        "reset_config srst_only srst_nogate connect_deassert_srst",
+        "-f",
+        "${config:zf.openocd.targetCfg}",
+        "-c",
+        "init; reset halt; program {project/iar/Debug_m7_0/Exe/cyt4bb7_cm_7_0.hex} verify; program {project/iar/Debug_m7_1/Exe/cyt4bb7_cm_7_1.hex} verify; reset run; shutdown"
+      ],
+      "problemMatcher": []
+    },
+    {
+      "label": "IAR: Flash CM7_0 + CM7_1 (CSpyBat)",
+      "dependsOrder": "sequence",
+      "dependsOn": [
+        "IAR: Flash CM7_0 (CSpyBat)",
+        "IAR: Flash CM7_1 (CSpyBat)"
+      ],
+      "group": {
+        "kind": "build"
+      },
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated",
+        "clear": true
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "IAR: Flash CM7_0 (CSpyBat)",
+      "type": "shell",
+      "command": "${config:zf.iar.cspybatPath}",
+      "group": "build",
+      "options": {
+        "cwd": "${workspaceFolder}",
+        "shell": {
+          "executable": "C:\\Windows\\System32\\cmd.exe",
+          "args": [
+            "/d",
+            "/c",
+            "chcp 936>nul &&"
+          ]
+        }
+      },
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated",
+        "clear": true
+      },
+      "args": [
+        "-f",
+        "${workspaceFolder}\\${config:zf.iar.generalXcl}",
+        "--debug_file=${workspaceFolder}\\${config:zf.iar.debugFile.m7_0}",
+        "--download_only",
+        "--backend",
+        "-f",
+        "${workspaceFolder}\\${config:zf.iar.driverXcl.m7_0}"
+      ],
+      "problemMatcher": []
+    },
+    {
+      "label": "IAR: Flash CM7_0 (Auto)",
+      "type": "shell",
+      "command": "powershell.exe",
+      "group": "build",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated",
+        "clear": true
+      },
+      "args": [
+        "-NoProfile",
+        "-ExecutionPolicy",
+        "Bypass",
+        "-File",
+        "${workspaceFolder}\\.vscode\\iar-flash.ps1",
+        "-Core",
+        "m7_0",
+        "-WorkspaceFolder",
+        "${workspaceFolder}",
+        "-CSpyBatPath",
+        "${config:zf.iar.cspybatPath}"
+      ],
+      "problemMatcher": []
+    },
+    {
+      "label": "IAR: Flash CM7_1 (Auto)",
+      "type": "shell",
+      "command": "powershell.exe",
+      "group": "build",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated",
+        "clear": true
+      },
+      "args": [
+        "-NoProfile",
+        "-ExecutionPolicy",
+        "Bypass",
+        "-File",
+        "${workspaceFolder}\\.vscode\\iar-flash.ps1",
+        "-Core",
+        "m7_1",
+        "-WorkspaceFolder",
+        "${workspaceFolder}",
+        "-CSpyBatPath",
+        "${config:zf.iar.cspybatPath}"
+      ],
+      "problemMatcher": []
+    },
+    {
+      "label": "IAR: Flash CM7_0 + CM7_1 (Auto)",
+      "dependsOrder": "sequence",
+      "dependsOn": [
+        "IAR: Flash CM7_0 (Auto)",
+        "IAR: Flash CM7_1 (Auto)"
+      ],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated",
+        "clear": true
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "IAR: Flash CM7_1 (CSpyBat)",
+      "type": "shell",
+      "command": "${config:zf.iar.cspybatPath}",
+      "group": "build",
+      "options": {
+        "cwd": "${workspaceFolder}",
+        "shell": {
+          "executable": "C:\\Windows\\System32\\cmd.exe",
+          "args": [
+            "/d",
+            "/c",
+            "chcp 936>nul &&"
+          ]
+        }
+      },
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated",
+        "clear": true
+      },
+      "args": [
+        "-f",
+        "${workspaceFolder}\\${config:zf.iar.generalXcl}",
+        "--debug_file=${workspaceFolder}\\${config:zf.iar.debugFile.m7_1}",
+        "--download_only",
+        "--backend",
+        "-f",
+        "${workspaceFolder}\\${config:zf.iar.driverXcl.m7_1}"
+      ],
+      "problemMatcher": []
+    }
+  ]
+}
