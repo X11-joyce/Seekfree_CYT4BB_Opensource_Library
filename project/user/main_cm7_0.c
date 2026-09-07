@@ -46,6 +46,8 @@
 // **************************** 代码区域 ****************************
 int flag = 0;
 
+
+
 int main(void)
 {
     clock_init(SYSTEM_CLOCK_250M); 	// 时钟配置及系统初始化<务必保留>
@@ -63,6 +65,7 @@ int main(void)
     pit_ms_init(PIT_CH0, 1); // 定时器通道 0 周期中断初始化 1ms周期
     pit_ms_init(PIT_CH1, 5); // 定时器通道 1 周期中断初始化 5ms周期
     small_driver_uart_init();//无刷电机初始化
+    uart_receiver_init();                                            //sbus接收机初始化
    //interrupt_set_priority()
    
     // 此处编写用户代码 例如外设初始化代码等
@@ -76,9 +79,25 @@ int main(void)
         //printf("imu660rb acc data:  %5d\n", imu660rb_acc_x );
         //printf("angle: %d\n", small_driver_value.receive_left_speed_data);
         flag++;
-      
-      
-        // 此处编写需要循环执行的代码
+//遥控器
+    //    if(1 == uart_receiver.finsh_flag)                            // 帧完成标志判断
+    //     {
+    //         if(1 == uart_receiver.state)                             // 遥控器失控状态判断
+    //         {
+    //             //printf("CH1-CH6 data: ");
+    //             for(int i = 0; i < 6; i++)
+    //             {
+    //                 //printf("%d ", uart_receiver.channel[i]);         // 串口输出6个通道数据
+    //             }
+    //             //printf("\r\n");
+    //         } 
+    //         else
+    //         {
+    //            // printf("Remote control has been disconnected.\r\n"); // 串口输出失控提示
+    //         }
+    //         uart_receiver.finsh_flag = 0;                            // 帧完成标志复位
+    //     }  
+
     }
 }
 
